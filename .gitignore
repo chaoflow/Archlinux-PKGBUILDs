@@ -1,3 +1,4 @@
+*.part
 *.tar.gz
 pkg/
 src/
