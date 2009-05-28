@@ -6,7 +6,7 @@ pkgdesc="A small but very powerful text-based mail client with sidebar-patch"
 patchdate="20090522"
 arch=('i686', 'x86_64')
 url="http://lunar-linux.org/index.php?page=mutt-sidebar"
-depends=('ncurses' 'gnutls')
+depends=('ncurses' 'gnutls' 'gdbm' 'zlib' 'libsasl' 'gpgme')
 makedepends=('gnupg')
 conflicts=('mutt')
 provides=('mutt')
