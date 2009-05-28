@@ -3,7 +3,7 @@ pkgname=mutt-sidebar
 pkgver=1.5.19
 pkgrel=1
 pkgdesc="A small but very powerful text-based mail client with sidebar-patch"
-patchdate="20090308"
+patchdate="20090522"
 arch=('i686', 'x86_64')
 url="http://lunar-linux.org/index.php?page=mutt-sidebar"
 depends=('ncurses' 'openssl')
@@ -11,7 +11,7 @@ makedepends=('gnupg')
 conflicts=('mutt')
 provides=('mutt')
 source=(ftp://ftp.mutt.org/mutt/devel/mutt-${pkgver}.tar.gz http://lunar-linux.org/~tchan/mutt/patch-${pkgver}.sidebar.$patchdate.txt muttrc.example)
-md5sums=('73b3747bc7f7c805921e8d24ebac693f' '601f9f7ee46653f138cc53e5ff444cd2' '336d1d8e290a0595dbe2cd92d720ffc9')
+md5sums=('73b3747bc7f7c805921e8d24ebac693f' 'bd35e171018ecb26d4eb0a743a1a2277' '336d1d8e290a0595dbe2cd92d720ffc9')
 license=('GPL')
 
 build() {
