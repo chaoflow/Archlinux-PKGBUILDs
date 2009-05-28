@@ -24,6 +24,7 @@ build() {
   make || return 1
   make DESTDIR=$startdir/pkg install
   rm -f $startdir/pkg/usr/bin/{flea,muttbug}
+  rm -f $startdir/pkg/usr/share/man/man1/{flea,muttbug}.1
   rm -f ${startdir}/pkg/etc/mime.types*
   install -m644 -D ${startdir}/src/muttrc.example ${startdir}/pkg/etc/muttrc.example
 }
