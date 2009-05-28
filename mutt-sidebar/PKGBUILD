@@ -4,7 +4,7 @@ pkgver=1.5.19
 pkgrel=1
 pkgdesc="A small but very powerful text-based mail client with sidebar-patch"
 patchdate="20090308"
-arch=('i686')
+arch=('i686', 'x86_64')
 url="http://lunar-linux.org/index.php?page=mutt-sidebar"
 depends=('ncurses' 'openssl')
 makedepends=('gnupg')
