@@ -1,0 +1,27 @@
+# Maintainer: Damnshock <damnshock-youknowwhatgoeshere-gmail.com>
+pkgname=mutt-sidebar
+pkgver=1.5.19
+pkgrel=1
+pkgdesc="A small but very powerful text-based mail client with sidebar-patch"
+patchdate="20090308"
+arch=('i686')
+url="http://lunar-linux.org/index.php?page=mutt-sidebar"
+depends=('ncurses' 'openssl')
+makedepends=('gnupg')
+conflicts=('mutt')
+provides=('mutt')
+source=(ftp://ftp.mutt.org/mutt/devel/mutt-${pkgver}.tar.gz http://lunar-linux.org/~tchan/mutt/patch-${pkgver}.sidebar.$patchdate.txt muttrc.example)
+md5sums=('73b3747bc7f7c805921e8d24ebac693f' '601f9f7ee46653f138cc53e5ff444cd2' '336d1d8e290a0595dbe2cd92d720ffc9')
+license=('GPL')
+
+build() {
+  cd $startdir/src/mutt-$pkgver
+  patch -p1 -i ../patch-${pkgver}.sidebar.$patchdate.txt
+    ./configure --prefix=/usr --sysconfdir=/etc \
+    --enable-pop  --enable-imap --enable-pgp --enable-hcache \
+    --enable-gpgme --enable-compressed --with-sasl --without-idn
+  make || return 1
+  make DESTDIR=$startdir/pkg install
+  rm -f $startdir/pkg/usr/bin/{flea,muttbug}
+  install -m644 -D ${startdir}/src/muttrc.example ${startdir}/pkg/etc/muttrc.example
+}
