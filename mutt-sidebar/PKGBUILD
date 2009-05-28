@@ -6,7 +6,7 @@ pkgdesc="A small but very powerful text-based mail client with sidebar-patch"
 patchdate="20090522"
 arch=('i686', 'x86_64')
 url="http://lunar-linux.org/index.php?page=mutt-sidebar"
-depends=('ncurses' 'openssl')
+depends=('ncurses' 'gnutls')
 makedepends=('gnupg')
 conflicts=('mutt')
 provides=('mutt')
@@ -19,7 +19,8 @@ build() {
   patch -p1 -i ../patch-${pkgver}.sidebar.$patchdate.txt
     ./configure --prefix=/usr --sysconfdir=/etc \
     --enable-pop  --enable-imap --enable-pgp --enable-hcache \
-    --enable-gpgme --enable-compressed --with-sasl --without-idn
+    --enable-gpgme --enable-compressed --with-sasl --without-idn \
+    --with-gnutls=/usr
   make || return 1
   make DESTDIR=$startdir/pkg install
   rm -f $startdir/pkg/usr/bin/{flea,muttbug}
