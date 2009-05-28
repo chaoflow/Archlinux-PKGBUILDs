@@ -17,7 +17,7 @@ license=('GPL')
 build() {
   cd $startdir/src/mutt-$pkgver
   patch -p1 -i ../patch-${pkgver}.sidebar.$patchdate.txt
-    ./configure --prefix=/usr --sysconfdir=/etc \
+  ./configure --prefix=/usr --sysconfdir=/etc \
     --enable-pop  --enable-imap --enable-pgp --enable-hcache \
     --enable-gpgme --enable-compressed --with-sasl --without-idn \
     --with-gnutls
