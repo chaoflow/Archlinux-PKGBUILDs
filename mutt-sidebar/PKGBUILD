@@ -20,7 +20,7 @@ build() {
     ./configure --prefix=/usr --sysconfdir=/etc \
     --enable-pop  --enable-imap --enable-pgp --enable-hcache \
     --enable-gpgme --enable-compressed --with-sasl --without-idn \
-    --with-gnutls=/usr
+    --with-gnutls
   make || return 1
   make DESTDIR=$startdir/pkg install
   rm -f $startdir/pkg/usr/bin/{flea,muttbug}
