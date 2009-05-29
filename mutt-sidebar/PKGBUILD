@@ -2,7 +2,7 @@
 # Contributor: Florian Friesdorf <flo@chaoflow.net>
 pkgname=mutt-sidebar
 pkgver=1.5.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A small but very powerful text-based mail client with sidebar-patch"
 patchdate="20090522"
 arch=('i686', 'x86_64')
