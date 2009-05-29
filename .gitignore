@@ -2,3 +2,7 @@
 *.tar.gz
 pkg/
 src/
+.*.swp
+.*.swo
+.swp
+.swo
