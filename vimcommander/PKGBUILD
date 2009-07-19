@@ -11,5 +11,5 @@ source=(${pkgname}.vim::http://vim.sourceforge.net/scripts/download_script.php?s
 md5sums=('52d5018aecd7d550a5ac6609cdf3fa03')
 
 build() {
-    install -Dm755 ${srcdir}/${pkgname}.vim ${pkgdir}/usr/share/vim/vim72/plugin/${pkgname}.vim
+    install -Dm755 ${srcdir}/${pkgname}.vim ${pkgdir}/usr/share/vim/plugin/${pkgname}.vim
 }
