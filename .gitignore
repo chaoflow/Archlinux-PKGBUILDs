@@ -1,6 +1,7 @@
 *.part
 *.tar.bz2
 *.tar.gz
+*.vim
 pkg/
 src/
 .*.swp
