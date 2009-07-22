@@ -1,0 +1,26 @@
+pkgname=sabnzbd
+pkgver=0.4.11
+pkgrel=1
+pkgdesc="A web-interface based binary newsgrabber with NZB file support"
+arch=(i686 x86_64)
+url="http://www.sabnzbd.org/"
+license=('GPL')
+depends=('wget' 'par2cmdline' 'python25' 'python-cheetah' 'python-feedparser' 'python-yenc' 'pyopenssl' 'unrar' 'unzip')
+install=sabnzbd.install
+backup=('/etc/conf.d/sabnzbd' '/opt/sabnzbd/sabnzbd.ini')
+source=("http://downloads.sourceforge.net/sabnzbdplus/SABnzbd-$pkgver-src.tar.gz" sabnzbd sabnzbd.init sabnzbd.confd)
+md5sums=('ae7180f98bff5dde704bb4201e6f5250' '3d893740ed3add96c16911bb83254ce1' '946d9d680e73d965322ea7a1ab474ac8'
+    '21b2e39ac5dd9682416521392c07cf99')
+
+
+build() {
+	mkdir -p $startdir/pkg/opt/sabnzbd
+	mv -v $startdir/src/SABnzbd-$pkgver/* $startdir/pkg/opt/sabnzbd/
+	find $startdir/pkg/opt/sabnzbd -type d -exec chmod 755 {} \;
+	find $startdir/pkg/opt/sabnzbd -type f -exec chmod 644 {} \;
+	chmod 755 $startdir/pkg/opt/sabnzbd/SABnzbd.py
+	chmod 755 $startdir/pkg/opt/sabnzbd/Sample-PostProc.sh
+	install -D -m755 $startdir/sabnzbd $startdir/pkg/usr/bin/sabnzbd
+	install -D -m755 $startdir/sabnzbd.init $startdir/pkg/etc/rc.d/sabnzbd
+    install -D -m644 $startdir/sabnzbd.confd $startdir/pkg/etc/conf.d/sabnzbd
+}

@@ -1,0 +1,7 @@
+SABNZBD_USER="sabnzbd"
+SABNZBD_CONF="/opt/sabnzbd/sabnzbd.ini"
+
+# Set this to the IP and port sabnzbd is listening on
+# This is needed to shutdown sabnzbd properly
+SABNZBD_HOST="127.0.0.1"
+SABNZBD_PORT="8080"

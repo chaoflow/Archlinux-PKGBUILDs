@@ -1,0 +1,26 @@
+## arg 1:  the new package version
+post_install() {
+  echo "==> sabnzbd: Installation moved from /usr/share/sabnzbd to /opt/sabnzbd"
+  echo "==> Please copy your sabnzbd.ini to the new directory."
+  echo "==>"
+  echo "==> If you change the host or port SABnzbd listens on from the default"
+  echo "==> you need to change /etc/conf.d/sabnzbd with the new information."
+  echo "==>"
+  echo "==> Ensure that your /etc/hosts file has an entry resolving this"
+  echo "==> machine's hostname. If your machine's hostname can't be resolved"
+  echo "==> SABnzbd will listen on ALL addresses!"
+  groupadd sabnzbd &> /dev/null
+  useradd -g sabnzbd -d /opt/sabnzbd -s /bin/false sabnzbd &> /dev/null
+  chown -R sabnzbd:sabnzbd /opt/sabnzbd
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  post_install $1
+}
+
+## arg 1:  the old package version
+pre_remove() {
+  userdel sabnzbd &> /dev/null
+}
