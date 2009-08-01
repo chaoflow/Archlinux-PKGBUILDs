@@ -11,11 +11,17 @@ depends=('ncurses' 'gnutls' 'gdbm' 'mime-types' 'zlib' 'libsasl' 'gpgme')
 makedepends=('gnupg')
 conflicts=('mutt')
 provides=('mutt')
-source=(ftp://ftp.mutt.org/mutt/devel/mutt-${pkgver}.tar.gz http://lunar-linux.org/~tchan/mutt/patch-${pkgver}.sidebar.$patchdate.txt muttrc.example)
+source=(
+    ftp://ftp.mutt.org/mutt/devel/mutt-${pkgver}.tar.gz
+    http://lunar-linux.org/~tchan/mutt/patch-${pkgver}.sidebar.$patchdate.txt
+    gpgme-1.2.0-patch
+    muttrc.example
+    )
 license=('GPL')
 
 build() {
   cd $startdir/src/mutt-$pkgver
+  patch -p1 -i ../gpgme-1.2.0-patch
   patch -p1 -i ../patch-${pkgver}.sidebar.$patchdate.txt
   ./configure --prefix=/usr --sysconfdir=/etc \
     --enable-pgp --enable-hcache \
@@ -30,4 +36,5 @@ build() {
 }
 md5sums=('027cdd9959203de0c3c64149a7ee351c'
          '5786519489877c92e4fff68cf547e869'
+         '6faa84e2520dad7c603e8a8b9e0a9b30'
          '336d1d8e290a0595dbe2cd92d720ffc9')
