@@ -1,10 +1,10 @@
 # Maintainer: Damnshock <damnshock-youknowwhatgoeshere-gmail.com>
 # Contributor: Florian Friesdorf <flo@chaoflow.net>
 pkgname=mutt-sidebar
-pkgver=1.5.19
-pkgrel=2
+pkgver=1.5.20
+pkgrel=1
 pkgdesc="A small but very powerful text-based mail client with sidebar-patch"
-patchdate="20090522"
+patchdate="20090619"
 arch=('i686', 'x86_64')
 url="http://lunar-linux.org/index.php?page=mutt-sidebar"
 depends=('ncurses' 'gnutls' 'gdbm' 'mime-types' 'zlib' 'libsasl' 'gpgme')
@@ -12,7 +12,6 @@ makedepends=('gnupg')
 conflicts=('mutt')
 provides=('mutt')
 source=(ftp://ftp.mutt.org/mutt/devel/mutt-${pkgver}.tar.gz http://lunar-linux.org/~tchan/mutt/patch-${pkgver}.sidebar.$patchdate.txt muttrc.example)
-md5sums=('73b3747bc7f7c805921e8d24ebac693f' 'bd35e171018ecb26d4eb0a743a1a2277' '336d1d8e290a0595dbe2cd92d720ffc9')
 license=('GPL')
 
 build() {
@@ -29,3 +28,6 @@ build() {
   rm -f ${startdir}/pkg/etc/mime.types*
   install -m644 -D ${startdir}/src/muttrc.example ${startdir}/pkg/etc/muttrc.example
 }
+md5sums=('027cdd9959203de0c3c64149a7ee351c'
+         '5786519489877c92e4fff68cf547e869'
+         '336d1d8e290a0595dbe2cd92d720ffc9')
