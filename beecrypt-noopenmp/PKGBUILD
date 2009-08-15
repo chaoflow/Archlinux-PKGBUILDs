@@ -1,6 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-pkgname=beecrypt
+pkgname=beecrypt-noopenmp
+_pkgname=beecrypt
 pkgver=4.2.1
 pkgrel=1
 pkgdesc="A strong and fast cryptography toolkit"
@@ -10,14 +11,16 @@ license=('LGPL')
 depends=('icu')
 makedepends=('automake' 'python')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
+provides=('beecrypt')
+conflicts=('beecrypt')
+source=(http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz)
 
 md5sums=('8441c014170823f2dff97e33df55af1e')
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/$_pkgname-$pkgver
 
-  ./configure --prefix=/usr --sysconfdir=/etc --without-java
+  ./configure --prefix=/usr --sysconfdir=/etc --without-java --disable-openmp
   make || return 1
   make DESTDIR=${pkgdir} install
 }
