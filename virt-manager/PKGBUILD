@@ -1,12 +1,15 @@
 # Contributor: Jonathan Wiersma <archaur at jonw dot org>
 pkgname=virt-manager
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop user interface for managing virtual machines."
 arch=('i686' 'x86_64')
 url="http://virt-manager.et.redhat.com"
 license=('GPL')
-depends=('python>=2.4' 'pygtk>=2' 'dbus-python>=0.61' 'libvirt>=0.4.0' 'gnome-python' 'gnome-python-desktop>=2.15.4' 'libxml2>=2.6.23' 'vte>=0.12.2' 'virtinst>=0.300.0' 'gtk-vnc>=0.0.1' 'rarian' 'gconf>=2.18.0.2')
+depends=('python>=2.4' 'pygtk>=2' 'dbus-python>=0.61' 'libvirt>=0.4.0'
+'gnome-python' 'gnome-python-desktop>=2.15.4' 'libxml2>=2.6.23' 'vte>=0.12.2'
+'virtinst>=0.300.0' 'gtk-vnc>=0.0.1' 'rarian' 'gconf>=2.18.0.2'
+'intltool>=0.35.0')
 makedepends=('gnome-doc-utils>=0.11.2')
 install=virt-manager.install
 source=("http://virt-manager.et.redhat.com/download/sources/$pkgname/$pkgname-$pkgver.tar.gz")
