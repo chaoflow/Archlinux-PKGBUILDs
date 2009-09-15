@@ -16,6 +16,6 @@ md5sums=('0ad10ba6924bb49f3d80eb4d560de0a5'
          'efbd5986e691ce8c876fb86e8f5961ea')
 
 build() {
-    install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/share/vim/plugin/gnupg.vim || return 1
+    install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/share/vim/vimfiles/plugin/gnupg.vim || return 1
     install -Dm755 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
 }
