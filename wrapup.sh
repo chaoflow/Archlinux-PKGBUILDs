@@ -19,3 +19,6 @@ tar tfz ${tarball}
 
 # sanity check - there needs to be a PKGBUILD otherwise we exit 1
 tar tfz ${tarball} |grep -q PKGBUILD || nopkgbuild ./${tarball}
+
+# and upload
+aurploader ${tarball}
