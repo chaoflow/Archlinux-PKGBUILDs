@@ -1,9 +1,9 @@
-# Maintainer: Laszlo Papp <djszapi @ gmail at com>
-# Contributor: Florian Friesdorf <flo@chaoflow.net>
+# Maintainer: Florian Friesdorf <flo@chaoflow.net>
+# Contributor: Laszlo Papp <djszapi @ gmail at com>
 pkgname=vimoutliner
 pkgver=122
 _scriptid=5768
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn vim into a full-featured text outliner"
 arch=(i686 x86_64)
 url="http://www.vim.org/scripts/script.php?script_id=517"
