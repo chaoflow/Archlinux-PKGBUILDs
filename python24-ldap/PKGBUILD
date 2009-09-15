@@ -2,8 +2,8 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Morgan LEFIEUX <comete_AT_archlinuxfr.org>
 
-pkgname=python-ldap-py24
-_pkgname=`echo $pkgname |sed -e 's,-py24$,,'`
+pkgname=python24-ldap
+_pkgname=python-ldap
 pkgver=2.3.8
 pkgrel=1
 pkgdesc="Provides an object-oriented API to access LDAP directory servers from Python programs"
@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://python-ldap.sourceforge.net"
 license=('custom')
 depends=('python24' 'libldap')
+conflicts=('python-ldap-py24')
 source=(http://arch.pp.ru/~sergej/dl/python-ldap-$pkgver.tar.bz2)
 md5sums=('fc4ef152b2a4c5f5e99a981eb9dda145')
 
