@@ -1,4 +1,5 @@
 # Maintainer: Laszlo Papp <djszapi @ gmail at com>
+# Contributor: Florian Friesdorf <flo@chaoflow.net>
 pkgname=vimoutliner
 pkgver=122
 _scriptid=5768
@@ -16,8 +17,15 @@ md5sums=('ded940d96731de00e4b653a3cdabde4c'
          'efbd5986e691ce8c876fb86e8f5961ea')
 
 build() {
-    install -d ${pkgdir}/usr/share/vim/
-    cp -aRf ${srcdir}/* ${pkgdir}/usr/share/vim/ || return 1
+    install -d ${pkgdir}/usr/share/vimoutliner/
+    cp -aRf ${srcdir}/* ${pkgdir}/usr/share/vimoutliner/ || return 1
+
+    for x in doc ftdetect ftplugin syntax; do
+        install -d ${pkgdir}/usr/share/vim/vimfiles/${x}
+        cd ${pkgdir}/usr/share/vim/vimfiles/${x}
+        ln -s ../../../vimoutliner/${x}/* .
+    done
+
     install -Dm755 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
 }
 
