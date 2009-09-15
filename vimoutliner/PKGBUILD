@@ -1,9 +1,15 @@
 # Maintainer: Florian Friesdorf <flo@chaoflow.net>
 # Contributor: Laszlo Papp <djszapi @ gmail at com>
+#
+# We are currently not installing:
+#   - *.bat
+#   - makezip
+# Everything else should be installed somewhere - as of pkgver 122-2/5768
+
 pkgname=vimoutliner
 pkgver=122
 _scriptid=5768
-pkgrel=2
+pkgrel=3
 pkgdesc="Turn vim into a full-featured text outliner"
 arch=(i686 x86_64)
 url="http://www.vim.org/scripts/script.php?script_id=517"
@@ -17,15 +23,55 @@ md5sums=('ded940d96731de00e4b653a3cdabde4c'
          'efbd5986e691ce8c876fb86e8f5961ea')
 
 build() {
-    install -d ${pkgdir}/usr/share/vimoutliner/
-    cp -aRf ${srcdir}/* ${pkgdir}/usr/share/vimoutliner/ || return 1
-
-    for x in doc ftdetect ftplugin syntax; do
-        install -d ${pkgdir}/usr/share/vim/vimfiles/${x}
-        cd ${pkgdir}/usr/share/vim/vimfiles/${x}
-        ln -s ../../../vimoutliner/${x}/* .
+    docdir=${pkgdir}/usr/share/doc/vimoutliner
+    install -d ${docdir}/
+    for x in \
+            FAQ.txt \
+            INSTALL \
+            MANIFEST \
+            README.otl \
+            changes.txt \
+            versions.txt
+    do
+         install -D -m644 ${srcdir}/${x} ${docdir}/
     done
 
-    install -Dm755 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
-}
+    bindir=${pkgdir}/usr/bin
+    install -d ${bindir}/
+    for x in \
+            doc2otl \
+            opml2otl \
+            otl2html \
+            otl2htmlList \
+            otl2pod \
+            otl2rtf \
+            otl2swiki \
+            otl2trac \
+            otlParser.rb \
+            pod2otl
+    do
+         install -m755 ${srcdir}/${x} ${bindir}/
+    done
 
+    sharedir=${pkgdir}/usr/share/vimoutliner
+    install -d ${sharedir}/
+    install -m644 ${srcdir}/easy.gvimrc ${sharedir}/easy.gvimrc
+    install -m644 ${srcdir}/easy.vimrc ${sharedir}/easy.vimrc
+
+    bitmapdir=${sharedir}/bitmaps
+    install -d ${bitmapdir}/
+    install -m644 ${srcdir}/bitmaps/TVO/* ${bitmapdir}/
+    
+    macrosdir=${sharedir}/macros
+    install -d ${macrosdir}/
+    install -m644 ${srcdir}/macros/* ${macrosdir}/
+
+    vimdir=${pkgdir}/usr/share/vim/vimfiles
+    for x in doc ftdetect ftplugin syntax; do
+        install -d ${vimdir}/${x}/
+        install -m644 ${srcdir}/${x}/* ${vimdir}/${x}/
+    done
+
+    licensedir=${pkgdir}/usr/share/licenses/${pkgname}
+    install -D -m755 ${srcdir}/license.txt ${licensedir}/license.txt
+}
