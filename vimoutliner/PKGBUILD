@@ -8,7 +8,7 @@
 
 pkgname=vimoutliner
 pkgver=122
-pkgrel=3
+pkgrel=4
 pkgdesc="Turn vim into a full-featured text outliner"
 arch=('i686' 'x86_64')
 url="http://www.vim.org/scripts/script.php?script_id=517"
