@@ -7,20 +7,20 @@ pkgname=rxvt-unicode-cvs
 _pkgname=rxvt-unicode
 pkgver=20090915
 pkgrel=1
-pkgdesc="an unicode enabled rxvt-clone terminal emulator (urxvt) from cvs"
-arch=(i686 x86_64)
-depends=('gcc-libs' 'libxft' 'libxpm')
-makedepends=('cvs' 'ncurses' 'perl>=5.10.0' 'pkgconfig')
-conflicts=('rxvt-unicode')
-provides=('rxvt-unicode')
-optdepends=('perl: lots of utilities' 'gtk2-perl: to use the urxvt-tabbed')
+pkgdesc="An unicode enabled rxvt-clone terminal emulator (urxvt) from cvs"
+arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
 license=("GPL2")
+depends=('gcc-libs' 'libxft' 'libxpm')
+makedepends=('cvs' 'ncurses' 'perl>=5.10.0' 'pkgconfig')
+optdepends=('perl: lots of utilities' 'gtk2-perl: to use the urxvt-tabbed')
+provides=('rxvt-unicode')
+conflicts=('rxvt-unicode')
 source=(${_pkgname}.desktop ${_pkgname}.png)
 md5sums=('5bfefa1b41c2b81ca18f2ef847330543'
          '84328cada91751df07324d95f8be4d1b')
 
-_cvsroot=":pserver:anonymous@cvs.schmorp.de/schmorpforge"
+_cvsroot=":pserver:anonymous:@cvs.schmorp.de/schmorpforge"
 _cvsmod="rxvt-unicode"
 
 build() {
@@ -61,3 +61,4 @@ build() {
   install -Dm644 ../${_pkgname}.png \
     ${startdir}/pkg/usr/share/pixmaps/${_pkgname}.png
 }
+

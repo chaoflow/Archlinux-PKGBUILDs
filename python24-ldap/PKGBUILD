@@ -25,3 +25,4 @@ build() {
 
   install -D -m644 LICENCE ${startdir}/pkg/usr/share/licenses/$pkgname/LICENSE
 }
+

@@ -8,17 +8,15 @@
 
 pkgname=vimoutliner
 pkgver=122
-_scriptid=5768
 pkgrel=3
 pkgdesc="Turn vim into a full-featured text outliner"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://www.vim.org/scripts/script.php?script_id=517"
 license=('custom')
-depends=(vim)
 groups=('vim-plugins')
+depends=(vim)
 install=vimdoc.install
-source=(${pkgname}.zip::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid}
-        license.txt)
+source=(${pkgname}.zip::http://www.vim.org/scripts/download_script.php?src_id=5768 license.txt)
 md5sums=('ded940d96731de00e4b653a3cdabde4c'
          'efbd5986e691ce8c876fb86e8f5961ea')
 
@@ -75,3 +73,4 @@ build() {
     licensedir=${pkgdir}/usr/share/licenses/${pkgname}
     install -D -m755 ${srcdir}/license.txt ${licensedir}/license.txt
 }
+
