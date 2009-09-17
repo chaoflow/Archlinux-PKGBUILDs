@@ -1,5 +1,5 @@
 # Maintainer: Damnshock <damnshock-youknowwhatgoeshere-gmail.com>
-# Contributor: Florian Friesdorf <flo@chaoflow.net>
+# Contributor: Florian Friesdorf <archlinux@chaoflow.net>
 pkgname=mutt-sidebar
 pkgver=1.5.20
 pkgrel=1

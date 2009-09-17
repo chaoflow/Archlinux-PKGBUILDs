@@ -1,5 +1,5 @@
 # Maintainer: Laszlo Papp <djszapi @ gmail at com>
-# Contributor: Florian Friesdorf <flo@chaoflow.net>
+# Contributor: Florian Friesdorf <archlinux@chaoflow.net>
 pkgname=vim-gnupg
 pkgver=1.0
 _scriptid=10833
