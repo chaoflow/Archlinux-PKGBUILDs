@@ -1,0 +1,4 @@
+#!/bin/sh
+# List packages I'm trying to contribute to
+
+grep -l 'Contributor.*chaoflow' */PKGBUILD
