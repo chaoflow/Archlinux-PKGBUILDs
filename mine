@@ -1,0 +1,4 @@
+#!/bin/sh
+# List packages I am the maintainer of
+
+grep -l 'Maintainer.*chaoflow' */PKGBUILD
