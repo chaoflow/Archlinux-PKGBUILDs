@@ -13,17 +13,17 @@ url="http://peak.telecommunity.com/DevCenter/setuptools"
 license=('PSF')
 depends=('python24')
 conflicts=('setuptools-py24')
-source=(http://cheeseshop.python.org/packages/source/s/$_pkgname/$_pkgname-$pkgver.tar.gz)
+source=(http://cheeseshop.python.org/packages/source/s/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
 md5sums=('3864c01d9c719c8924c455714492295e')
 
 build() {
-  cd $startdir/src/$_pkgname-$pkgver
-  mkdir -p $startdir/pkg/usr/lib/python2.4/site-packages
-  python2.4 setup.py install --root=$startdir/pkg
-  echo "/usr/lib/python2.4/site-packages/$_pkgname-$pkgver-py2.4.egg" > $startdir/pkg/usr/lib/python2.4/site-packages/$_pkgname.pth
+  cd ${startdir}/src/${_pkgname}-${pkgver}
+  mkdir -p ${startdir}/pkg/usr/lib/python2.4/site-packages
+  python2.4 setup.py install --root=${startdir}/pkg
+  echo "/usr/lib/python2.4/site-packages/${_pkgname}-${pkgver}-py2.4.egg" > ${startdir}/pkg/usr/lib/python2.4/site-packages/${_pkgname}.pth
 
   # we don't provide a non-suffixed easy_install
   echo "Removing non-suffixed easy_install"
-  rm $pkgdir/usr/bin/easy_install
+  rm ${pkgdir}/usr/bin/easy_install
 }
 

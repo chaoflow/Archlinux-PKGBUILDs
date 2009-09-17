@@ -21,8 +21,8 @@ md5sums=('ded940d96731de00e4b653a3cdabde4c'
          'efbd5986e691ce8c876fb86e8f5961ea')
 
 build() {
-    docdir=${pkgdir}/usr/share/doc/vimoutliner
-    install -d ${docdir}/
+    _docdir=${pkgdir}/usr/share/doc/vimoutliner
+    install -d ${_docdir}/
     for x in \
             FAQ.txt \
             INSTALL \
@@ -31,11 +31,11 @@ build() {
             changes.txt \
             versions.txt
     do
-         install -D -m644 ${srcdir}/${x} ${docdir}/
+         install -D -m644 ${srcdir}/${x} ${_docdir}/
     done
 
-    bindir=${pkgdir}/usr/bin
-    install -d ${bindir}/
+    _bindir=${pkgdir}/usr/bin
+    install -d ${_bindir}/
     for x in \
             doc2otl \
             opml2otl \
@@ -48,29 +48,29 @@ build() {
             otlParser.rb \
             pod2otl
     do
-         install -m755 ${srcdir}/${x} ${bindir}/
+         install -m755 ${srcdir}/${x} ${_bindir}/
     done
 
-    sharedir=${pkgdir}/usr/share/vimoutliner
-    install -d ${sharedir}/
-    install -m644 ${srcdir}/easy.gvimrc ${sharedir}/easy.gvimrc
-    install -m644 ${srcdir}/easy.vimrc ${sharedir}/easy.vimrc
+    _sharedir=${pkgdir}/usr/share/vimoutliner
+    install -d ${_sharedir}/
+    install -m644 ${srcdir}/easy.gvimrc ${_sharedir}/easy.gvimrc
+    install -m644 ${srcdir}/easy.vimrc ${_sharedir}/easy.vimrc
 
-    bitmapdir=${sharedir}/bitmaps
-    install -d ${bitmapdir}/
-    install -m644 ${srcdir}/bitmaps/TVO/* ${bitmapdir}/
+    _bitmapdir=${_sharedir}/bitmaps
+    install -d ${_bitmapdir}/
+    install -m644 ${srcdir}/bitmaps/TVO/* ${_bitmapdir}/
     
-    macrosdir=${sharedir}/macros
-    install -d ${macrosdir}/
-    install -m644 ${srcdir}/macros/* ${macrosdir}/
+    _macrosdir=${_sharedir}/macros
+    install -d ${_macrosdir}/
+    install -m644 ${srcdir}/macros/* ${_macrosdir}/
 
-    vimdir=${pkgdir}/usr/share/vim/vimfiles
+    _vimdir=${pkgdir}/usr/share/vim/vimfiles
     for x in doc ftdetect ftplugin syntax; do
-        install -d ${vimdir}/${x}/
-        install -m644 ${srcdir}/${x}/* ${vimdir}/${x}/
+        install -d ${_vimdir}/${x}/
+        install -m644 ${srcdir}/${x}/* ${_vimdir}/${x}/
     done
 
-    licensedir=${pkgdir}/usr/share/licenses/${pkgname}
-    install -D -m755 ${srcdir}/license.txt ${licensedir}/license.txt
+    _licensedir=${pkgdir}/usr/share/licenses/${_pkgname}
+    install -D -m755 ${srcdir}/license.txt ${_licensedir}/license.txt
 }
 

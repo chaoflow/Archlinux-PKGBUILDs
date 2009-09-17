@@ -24,19 +24,26 @@ _cvsroot=":pserver:anonymous:@cvs.schmorp.de/schmorpforge"
 _cvsmod="rxvt-unicode"
 
 build() {
-  cd ${startdir}/src
+  cd ${srcdir}
 
-  unset CVS_RSH
-
+  msg "Connecting to ${_cvsmod} CVS server...."
   if [ -d ${_cvsmod}/CVS ]; then
     cd ${_cvsmod}
-    cvs -q update -dA
+    cvs -z3 update -d
   else
-    cvs -q -z3 -d ${_cvsroot} co ${_cvsmod}
+    cvs -z3 -d ${_cvsroot} co -D ${pkgver} -f ${_cvsmod}
     cd ${_cvsmod}
   fi
+  # necessary / harmful?
+  ./autogen.sh
 
-  ./configure --prefix=/usr \
+  msg "CVS checkout done or server timeout"
+  msg "Starting make..."
+
+  mkdir ${srcdir}/${_cvsmod}-build
+  cd ${srcdir}/${_cvsmod}-build
+
+  ../${_srcdir}/${_cvsmod}/configure --prefix=/usr \
     --with-terminfo=/usr/share/terminfo \
     --enable-font-styles \
     --enable-xim \
