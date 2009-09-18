@@ -1,10 +1,11 @@
 #!/bin/sh
 
-srcdir=$1
-pkgdir=$2
+pkgname=$1
+srcdir=$2
+pkgdir=$3
 
-_docdir=${pkgdir}/usr/share/doc/vimoutliner
-install -d ${_docdir}/
+docdir=${pkgdir}/usr/share/doc/vimoutliner
+install -d ${docdir}/
 for x in \
     FAQ.txt \
     INSTALL \
@@ -13,11 +14,11 @@ for x in \
     changes.txt \
     versions.txt
 do
- install -D -m644 ${srcdir}/${x} ${_docdir}/
+ install -D -m644 ${srcdir}/${x} ${docdir}/
 done
 
-_bindir=${pkgdir}/usr/bin
-install -d ${_bindir}/
+bindir=${pkgdir}/usr/bin
+install -d ${bindir}/
 for x in \
     doc2otl \
     opml2otl \
@@ -30,27 +31,27 @@ for x in \
     otlParser.rb \
     pod2otl
 do
- install -m755 ${srcdir}/${x} ${_bindir}/
+ install -m755 ${srcdir}/${x} ${bindir}/
 done
 
-_sharedir=${pkgdir}/usr/share/vimoutliner
-install -d ${_sharedir}/
-install -m644 ${srcdir}/easy.gvimrc ${_sharedir}/easy.gvimrc
-install -m644 ${srcdir}/easy.vimrc ${_sharedir}/easy.vimrc
+sharedir=${pkgdir}/usr/share/vimoutliner
+install -d ${sharedir}/
+install -m644 ${srcdir}/easy.gvimrc ${sharedir}/easy.gvimrc
+install -m644 ${srcdir}/easy.vimrc ${sharedir}/easy.vimrc
 
-_bitmapdir=${_sharedir}/bitmaps
-install -d ${_bitmapdir}/
-install -m644 ${srcdir}/bitmaps/TVO/* ${_bitmapdir}/
+bitmapdir=${sharedir}/bitmaps
+install -d ${bitmapdir}/
+install -m644 ${srcdir}/bitmaps/TVO/* ${bitmapdir}/
 
-_macrosdir=${_sharedir}/macros
-install -d ${_macrosdir}/
-install -m644 ${srcdir}/macros/* ${_macrosdir}/
+macrosdir=${sharedir}/macros
+install -d ${macrosdir}/
+install -m644 ${srcdir}/macros/* ${macrosdir}/
 
-_vimdir=${pkgdir}/usr/share/vim/vimfiles
+vimdir=${pkgdir}/usr/share/vim/vimfiles
 for x in doc ftdetect ftplugin syntax; do
-install -d ${_vimdir}/${x}/
-install -m644 ${srcdir}/${x}/* ${_vimdir}/${x}/
+install -d ${vimdir}/${x}/
+install -m644 ${srcdir}/${x}/* ${vimdir}/${x}/
 done
 
-_licensedir=${pkgdir}/usr/share/licenses/${_pkgname}
-install -D -m755 ${srcdir}/license.txt ${_licensedir}/license.txt
+licensedir=${pkgdir}/usr/share/licenses/${pkgname}
+install -D -m755 ${srcdir}/license.txt ${licensedir}/license.txt
