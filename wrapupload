@@ -20,5 +20,8 @@ tar tfz ${tarball}
 # sanity check - there needs to be a PKGBUILD otherwise we exit 1
 tar tfz ${tarball} |grep -q PKGBUILD || nopkgbuild ./${tarball}
 
+# TODO: make the package and run namcap
+# maybe all this should go into a Makefile
+
 # and upload
 aurploader ${tarball}
