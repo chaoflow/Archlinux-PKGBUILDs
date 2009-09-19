@@ -4,9 +4,9 @@
 pkgname=vim-pydiction
 pkgver=1.2
 _srcid=11062
-pkgrel=3
+pkgrel=4
 pkgdesc="Allows you to auto-complete your Python code"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=850"
 license=('BSD')
 groups=('vim-plugins')
@@ -20,13 +20,19 @@ md5sums=('cf9e82b6990f84b510300850a5144b2e'
 
 build() {
     install -Dm755 $srcdir/pydiction-$pkgver/pydiction.py \
-                   $pkgdir/usr/bin/pydiction.py
+                   $pkgdir/usr/bin/pydiction.py \
+                   || return 1
     install -Dm644 $srcdir/pydiction-$pkgver/complete-dict \
-                   $pkgdir/usr/share/pydiction/complete-dict
+                   $pkgdir/usr/share/pydiction/complete-dict \
+                   || return 1
     install -Dm644 $srcdir/pydiction-$pkgver/python_pydiction.vim \
-                   $pkgdir/usr/share/vim/vimfiles/ftplugin/python_pydiction.vim
+                   $pkgdir/usr/share/vim/vimfiles/ftplugin/python_pydiction.vim \
+                   || return 1
     install -Dm644 $srcdir/pydiction-$pkgver/README.txt \
-                   $pkgdir/usr/share/doc/vim-pydiction/README.txt
-    install -Dm644 $srcdir/COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+                   $pkgdir/usr/share/doc/vim-pydiction/README.txt \
+                   || return 1
+    install -Dm644 $srcdir/COPYING \
+                   $pkgdir/usr/share/licenses/$pkgname/COPYING \
+                   || return 1
 }
 
