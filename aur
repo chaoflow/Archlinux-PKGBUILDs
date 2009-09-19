@@ -1,0 +1,110 @@
+#!/usr/bin/env python
+
+# so far we need to be called from within a package directory
+
+from glob import glob
+import os
+import sys
+
+from UserDict import UserDict
+
+class Metadata(UserDict):
+    VALIDKEYS = ('pkgname','pkgver','pkgrel')
+    def __init__(self, pkgbuild=None):
+        UserDict.__init__(self)
+        if pkgbuild:
+            self.fromFile(pkgbuild)
+
+    def fromFile(self, pkgbuild):
+        # just picking raisins
+        for x in pkgbuild:
+            if not x.startswith(self.VALIDKEYS):
+                continue
+            x = x.rstrip()
+            (key, value) = x.split('=',1)
+            self[key] = value
+
+try:
+    action = sys.argv.pop(1)
+except IndexError:
+    sys.exit()
+
+def error(msg):
+    sys.stderr.write(msg)
+
+
+if os.system('ls PKGBUILD >/dev/null 2>&1') != 0:
+    error('Not in a package directory: PKGBUILD is missing.')
+    sys.exit()
+# XXX: import pacman, pacman.load('PKGBUILD')
+pkgbuild = list(open('PKGBUILD'))
+metadata = Metadata(pkgbuild)
+#binpkg = '%s-%s-%s-{any,x86_64,i686}.pkg.tar.gz' % (
+#    metadata['pkgname'],
+#    metadata['pkgver'],
+#    metadata['pkgrel'],
+#    )
+srcpkg = '%s-%s-%s.src.tar.gz' % (
+    metadata['pkgname'],
+    metadata['pkgver'],
+    metadata['pkgrel'],
+    )
+
+def build():
+    os.system(' '.join(['makepkg']+sys.argv[1:]))
+
+def check():
+    binpkgs=glob('./*.pkg.tar.gz')
+    for x in binpkgs:
+        print "Checking package '%s':" % (x,)
+        os.system('namcap %s' % (x,))
+
+def clean():
+    os.system('rm -fR *{.tar.gz,zip} src pkg')
+
+#def listbin():
+#    os.system('tar tfz %s' % (binpkg,))
+
+def listsrc():
+    os.system('tar tfz %s' % (srcpkg,))
+
+def wrapup():
+    os.system(' '.join(['makepkg --source']+sys.argv[1:]))
+
+def upload():
+    os.system('aurploader %s' % (srcpkg,))
+
+actions=dict(
+    build=build,
+    check=check,
+    clean=clean,
+#    listbin=listbin,
+    listsrc=listsrc,
+    wrapup=wrapup,
+    upload=upload,
+    )
+
+# call the action
+actions[action]()
+
+
+
+
+# create new package / copy from skel, fire up editor
+
+# edit package / fire up editor for PKGBUILD
+
+# list package contents
+
+# vote for package
+
+# notify for package
+
+# adopt package
+
+# disown package
+
+# flag out of date
+
+
+        
