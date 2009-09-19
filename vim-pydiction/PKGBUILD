@@ -4,7 +4,7 @@
 pkgname=vim-pydiction
 pkgver=1.2
 _srcid=11062
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to auto-complete your Python code"
 arch=('i686' 'x86_64')
 url="http://www.vim.org/scripts/script.php?script_id=850"

@@ -1,5 +1,5 @@
 post_install() {
-    echo <<EOF
+    cat <<EOF
 Make sure you have the following in your ~/.vimrc:
   filetype plugin on
   let g:pydiction_location = '/usr/share/pydiction/complete-dict'
