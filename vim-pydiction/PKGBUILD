@@ -4,7 +4,7 @@
 pkgname=vim-pydiction
 pkgver=1.2
 _srcid=11062
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to auto-complete your Python code"
 arch=('i686' 'x86_64')
 url="http://www.vim.org/scripts/script.php?script_id=850"
@@ -24,7 +24,7 @@ build() {
     install -Dm644 $srcdir/pydiction-$pkgver/complete-dict \
                    $pkgdir/usr/share/pydiction/complete-dict
     install -Dm644 $srcdir/pydiction-$pkgver/python_pydiction.vim \
-                   $pkgdir/usr/share/vim/vimfiles/plugin/python_pydiction.vim
+                   $pkgdir/usr/share/vim/vimfiles/ftplugin/python_pydiction.vim
     install -Dm644 $srcdir/pydiction-$pkgver/README.txt \
                    $pkgdir/usr/share/doc/vim-pydiction/README.txt
     install -Dm644 $srcdir/COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
