@@ -1,21 +1,24 @@
-# Maintainer: Laszlo Papp <djszapi @ gmail at com>
+# Maintainer: Florian Friesdorf <archlinux@chaoflow.net>
+# Contributor: Laszlo Papp <djszapi @ gmail at com>
+
 pkgname=vim-pythonhelper
 pkgver=0.82
-_scriptid=10987
-pkgrel=1
+_srcid=10987
+pkgrel=2
 pkgdesc="Displays Python class, method or function the cursor is in on the status line"
-arch=(i686 x86_64)
+arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=435"
-license=('custom')
-depends=(vim)
+license=('unknown')
 groups=('vim-plugins')
-install=vimdoc.install
-source=(${pkgname}::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid}
-        license.txt)
-md5sums=('c0e8ad68f86ad81355679540a970b179'
-         'efbd5986e691ce8c876fb86e8f5961ea')
+depends=('vim' 'python')
+source=(
+  ${pkgname}.vim::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
+  )
+md5sums=('c0e8ad68f86ad81355679540a970b179')
 
 build() {
-    install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/share/vim/colors/pythonhelper.vim || return 1
-    install -Dm755 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
+    install -Dm644 ${srcdir}/${pkgname}.vim \
+        ${pkgdir}/usr/share/vim/vimfiles/ftplugin/python_pythonhelper.vim \
+        || return 1
 }
+
