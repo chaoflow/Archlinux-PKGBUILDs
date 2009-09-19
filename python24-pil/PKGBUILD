@@ -4,13 +4,14 @@
 
 pkgname=python24-pil
 pkgver=1.1.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Python imaging library"
 arch=('i686' 'x86_64')
 url="http://www.pythonware.com/products/pil/index.htm"
 license=('custom:"pil"')
 depends=('python24' 'libjpeg' 'freetype2') 
 makedepends=('tk>=8.5.0')
+optdepends=('tk>=8.5.0')
 conflicts=('pil-py24')
 source=(http://effbot.org/downloads/Imaging-${pkgver}.tar.gz)
 md5sums=('3a9b5c20ca52f0a9900512d2c7347622')
