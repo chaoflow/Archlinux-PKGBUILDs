@@ -1,33 +1,34 @@
 # Maintainer: Florian Friesdorf <archlinux@chaoflow.net>
-# Contributor: Laszlo Papp <djszapi @ gmail at com>
-#
-# We are currently not installing:
-#   - *.bat
-#   - makezip
-# Everything else should be installed somewhere - as of pkgver 122-2/5768
 
-pkgname=vim-tvo
-pkgver=122
-_srcid=5768
+pkgname=vim-vimoutliner
+pkgver=0.3.4
 pkgrel=1
-pkgdesc="The Vim Outliner - one of many"
+pkgdesc="Vim Outliner - one of many"
 arch=('any')
-url="http://www.vim.org/scripts/script.php?script_id=517"
-license=('unknown')
+url="http://www.vimoutliner.org/"
+license=('GPL')
 groups=('vim-plugins')
 depends=('vim')
-conflicts=('vimoutliner')
-optdepends=('ruby: for otl2pod, opml2otl, doc2otl, otl2swiki')
+optdepends=('python: for /usr/bin/otl2html.py')
+conflicts=('vimoutliner' 'vim-tvo')
 install=vimdoc.install
 source=(
-  ${pkgname}.zip::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
+  "vimoutliner-$pkgver.tar.gz::http://www.vimoutliner.org/modules.php?op=modload&name=Downloads&file=index&req=getit&lid=25"
   install.sh
+  ftdetect_vo_base.vim
   )
-md5sums=('ded940d96731de00e4b653a3cdabde4c'
-         'fb079d5623bbc55ff5023f0df5a8d401')
+md5sums=('66b69714be50a1f411830380a3e6bd5e'
+         '4d77f02a565d6ea72f5c0f0c9f947c03'
+         '9f59f4e104e5f5a79525565610a59b0f')
 
 build() {
     cd ${srcdir}
-    ./install.sh ${pkgname} ${srcdir} ${pkgdir} || return 1
+    ./install.sh $pkgname $srcdir/vimoutliner-$pkgver $pkgdir || return 1
+
+    install -Dm644 $srcdir/ftdetect_vo_base.vim \
+        $pkgdir/usr/share/vim/vimfiles/ftdetect/vo_base.vim
 }
 
+md5sums=('66b69714be50a1f411830380a3e6bd5e'
+         '7524689f60251e05f6d9ff853493f3e0'
+         '9f59f4e104e5f5a79525565610a59b0f')

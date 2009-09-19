@@ -1,34 +1,26 @@
 #!/bin/sh -e
 
 pkgname=$1
-srcdir=$2
+src=$2
 pkgdir=$3
 
-docdir=${pkgdir}/usr/share/doc/$pkgname
-install -d ${docdir}/
+docdir=$pkgdir/usr/share/doc/$pkgname
+install -d $docdir/
 install -m644 \
-    ${srcdir}/{FAQ.txt,INSTALL,MANIFEST,README.otl,changes.txt,versions.txt} \
-    ${docdir}/
+    $src/{CHANGELOG,INSTALL,LICENSE,VERSION,vimoutlinerrc} \
+    $docdir/
 
-bindir=${pkgdir}/usr/bin
-install -d ${bindir}/
-install -m755 ${srcdir}/{doc2otl,opml2otl,otl2*,otlParser.rb,pod2otl} \
-    ${bindir}/
+install -d $pkgdir/usr/bin/
+install -m755 $src/add-ons/scripts/otl2html.py $pkgdir/usr/bin/
+install -m755 $src/scripts/vo_maketags.pl $pkgdir/usr/bin/
 
-sharedir=${pkgdir}/usr/share/$pkgname
-install -d ${sharedir}/
-install -m644 ${srcdir}/easy.{gvimrc,vimrc} ${sharedir}/
+install -d $pkgdir/usr/share/vim/vimfiles/colors/
+install -m644 $src/colors/* $pkgdir/usr/share/vim/vimfiles/colors/
 
-bitmapdir=${sharedir}/bitmaps
-install -d ${bitmapdir}/
-install -m644 ${srcdir}/bitmaps/TVO/* ${bitmapdir}/
-
-macrosdir=${sharedir}/macros
-install -d ${macrosdir}/
-install -m644 ${srcdir}/macros/* ${macrosdir}/
-
-vimdir=${pkgdir}/usr/share/vim/vimfiles
-for x in doc ftdetect ftplugin syntax; do
-    install -d ${vimdir}/${x}/
-    install -m644 ${srcdir}/${x}/* ${vimdir}/${x}/
+for x in doc ftplugin syntax; do
+    install -d $pkgdir/usr/share/vim/vimfiles/$x/
+    install -m644 $src/$x/* $pkgdir/usr/share/vim/vimfiles/$x/
 done
+
+install -d $pkgdir/usr/share/vim-vimoutliner/
+install -m644 $src/add-ons/plugins/* $pkgdir/usr/share/vim-vimoutliner/
