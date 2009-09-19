@@ -1,21 +1,22 @@
-# Maintainer: Laszlo Papp <djszapi @ gmail at com>
+# Maintainer: Florian Friesdorf <archlinux@chaoflow.net>
+# Contributor: Laszlo Papp <djszapi @ gmail at com>
+
 pkgname=vim-pydoc
 pkgver=1.1.1
-_scriptid=3973
+_srcid=3973
 pkgrel=1
-pkgdesc="Python documentation view- and search-tool (uses pydoc)"
-arch=(i686 x86_64)
+pkgdesc="Search and view python documentation from within vim (uses pydoc)"
+arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=910"
-license=('custom')
-depends=(vim)
+license=('GPL')
 groups=('vim-plugins')
-install=vimdoc.install
-source=(${pkgname}::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid}
-        license.txt)
-md5sums=('b02f44eb7724bb0374bcba9a5215be1f'
-         'efbd5986e691ce8c876fb86e8f5961ea')
+depends=('vim' 'python')
+source=(
+  ${pkgname}.vim::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
+  )
+md5sums=('b02f44eb7724bb0374bcba9a5215be1f')
 
 build() {
-    install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/share/vim/plugin/pydoc.vim || return 1
-    install -Dm755 ${srcdir}/license.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
+    install -Dm644 ${srcdir}/${pkgname}.vim \
+        ${pkgdir}/usr/share/vim/vimfiles/ftplugin/python_pydoc.vim || return 1
 }
