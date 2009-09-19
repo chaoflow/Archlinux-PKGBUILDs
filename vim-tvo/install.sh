@@ -4,7 +4,7 @@ pkgname=$1
 srcdir=$2
 pkgdir=$3
 
-docdir=${pkgdir}/usr/share/doc/vimoutliner
+docdir=${pkgdir}/usr/share/doc/$pkgname
 install -d ${docdir}/
 install -m644 \
     ${srcdir}/{FAQ.txt,INSTALL,MANIFEST,README.otl,changes.txt,versions.txt} \
@@ -15,7 +15,7 @@ install -d ${bindir}/
 install -m755 ${srcdir}/{doc2otl,opml2otl,otl2*,otlParser.rb,pod2otl} \
     ${bindir}/
 
-sharedir=${pkgdir}/usr/share/vimoutliner
+sharedir=${pkgdir}/usr/share/$pkgname
 install -d ${sharedir}/
 install -m644 ${srcdir}/easy.{gvimrc,vimrc} ${sharedir}/
 
@@ -32,6 +32,3 @@ for x in doc ftdetect ftplugin syntax; do
     install -d ${vimdir}/${x}/
     install -m644 ${srcdir}/${x}/* ${vimdir}/${x}/
 done
-
-licensedir=${pkgdir}/usr/share/licenses/${pkgname}
-install -D -m644 ${srcdir}/license.txt ${licensedir}/license.txt

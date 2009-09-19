@@ -6,26 +6,25 @@
 #   - makezip
 # Everything else should be installed somewhere - as of pkgver 122-2/5768
 
-pkgname=vimoutliner
+pkgname=vim-tvo
 pkgver=122
 _srcid=5768
-pkgrel=6
-pkgdesc="Turn vim into a full-featured text outliner"
-arch=('i686' 'x86_64')
+pkgrel=1
+pkgdesc="The Vim Outliner - one of many"
+arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=517"
-license=('custom')
+license=('unknown')
 groups=('vim-plugins')
 depends=('vim')
+conflicts=('vimoutliner')
 optdepends=('ruby: for otl2pod, opml2otl, doc2otl, otl2swiki')
 install=vimdoc.install
 source=(
   ${pkgname}.zip::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
-  license.txt
   install.sh
   )
 md5sums=('ded940d96731de00e4b653a3cdabde4c'
-         'efbd5986e691ce8c876fb86e8f5961ea'
-         '05c7960198f77efa253e0422c32c3f14')
+         'fb079d5623bbc55ff5023f0df5a8d401')
 
 build() {
     cd ${srcdir}
