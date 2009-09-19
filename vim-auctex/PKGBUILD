@@ -4,7 +4,7 @@
 pkgname=vim-auctex
 _srcid=10437
 pkgver=2.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Macros for latex"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=162"
