@@ -8,7 +8,8 @@
 
 pkgname=vimoutliner
 pkgver=122
-pkgrel=5
+_srcid=5768
+pkgrel=6
 pkgdesc="Turn vim into a full-featured text outliner"
 arch=('i686' 'x86_64')
 url="http://www.vim.org/scripts/script.php?script_id=517"
@@ -17,13 +18,17 @@ groups=('vim-plugins')
 depends=('vim')
 optdepends=('ruby: for otl2pod, opml2otl, doc2otl, otl2swiki')
 install=vimdoc.install
-source=(${pkgname}.zip::http://www.vim.org/scripts/download_script.php?src_id=5768 license.txt install.sh)
+source=(
+  ${pkgname}.zip::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
+  license.txt
+  install.sh
+  )
 md5sums=('ded940d96731de00e4b653a3cdabde4c'
          'efbd5986e691ce8c876fb86e8f5961ea'
-         '608263f2fc2ce30b8d969dc3bd859525')
+         '05c7960198f77efa253e0422c32c3f14')
 
 build() {
     cd ${srcdir}
-    ./install.sh ${pkgname} ${srcdir} ${pkgdir}
+    ./install.sh ${pkgname} ${srcdir} ${pkgdir} || return 1
 }
 
