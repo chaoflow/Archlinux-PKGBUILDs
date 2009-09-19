@@ -1,18 +1,22 @@
 # Maintainer: Laszlo Papp <djszapi @ gmail at com>
 # Contributor: Florian Friesdorf <archlinux@chaoflow.net>
+
 pkgname=vim-gnupg
-pkgver=1.0
-_scriptid=10833
-pkgrel=2
+pkgver=2782
+_srcid=10833
+pkgrel=1
 pkgdesc="Plugin for transparent editing of gpg encrypted files"
-arch=(i686 x86_64)
+arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=661"
 license=('GPL')
-depends=(vim)
 groups=('vim-plugins')
-source=(${pkgname}::http://www.vim.org/scripts/download_script.php?src_id=${_scriptid})
+depends=(vim)
+source=(
+  ${pkgname}.vim::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
+  )
 md5sums=('0ad10ba6924bb49f3d80eb4d560de0a5')
 
 build() {
-    install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/share/vim/vimfiles/plugin/gnupg.vim || return 1
+    install -Dm644 ${srcdir}/${pkgname}.vim \
+        ${pkgdir}/usr/share/vim/vimfiles/plugin/gnupg.vim || return 1
 }
