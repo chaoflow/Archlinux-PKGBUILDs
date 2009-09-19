@@ -1,0 +1,33 @@
+# Maintainer: Florian Friesdorf <archlinux@chaoflow.net>
+# Contributor: Laszlo Papp <djszapi @ gmail at com>
+#
+# We are currently not installing:
+#   - *.bat
+#   - makezip
+# Everything else should be installed somewhere - as of pkgver 122-2/5768
+
+pkgname=vim-tvo
+pkgver=122
+_srcid=5768
+pkgrel=1
+pkgdesc="The Vim Outliner - one of many"
+arch=('any')
+url="http://www.vim.org/scripts/script.php?script_id=517"
+license=('unknown')
+groups=('vim-plugins')
+depends=('vim')
+conflicts=('vimoutliner')
+optdepends=('ruby: for otl2pod, opml2otl, doc2otl, otl2swiki')
+install=vimdoc.install
+source=(
+  ${pkgname}.zip::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
+  install.sh
+  )
+md5sums=('ded940d96731de00e4b653a3cdabde4c'
+         'fb079d5623bbc55ff5023f0df5a8d401')
+
+build() {
+    cd ${srcdir}
+    ./install.sh ${pkgname} ${srcdir} ${pkgdir} || return 1
+}
+
