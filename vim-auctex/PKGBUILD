@@ -4,16 +4,19 @@
 pkgname=vim-auctex
 _srcid=10437
 pkgver=2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Macros for latex"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=162"
 license=('unknown')
 groups=('vim-plugins')
 depends=(vim)
-source=(${pkgname}::http://www.vim.org/scripts/download_script.php?src_id=$_srcid)
+source=(
+  ${pkgname}.vim::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
+  )
 md5sums=('91bcd8e8858a23a6abaff9b6ac7a564f')
 
 build() {
-    install -Dm644 ${srcdir}/${pkgname} ${pkgdir}/usr/share/vim/vimfiles/plugin/auctex.vim || return 1
+    install -Dm644 ${srcdir}/${pkgname}.vim \
+        ${pkgdir}/usr/share/vim/vimfiles/ftplugin/tex_auctex.vim || return 1
 }
