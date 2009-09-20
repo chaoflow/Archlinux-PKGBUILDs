@@ -9,7 +9,7 @@
 pkgname=vim-tvo
 pkgver=122
 _srcid=5768
-pkgrel=2
+pkgrel=3
 pkgdesc="The Vim Outliner - one of many"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=517"
@@ -17,6 +17,7 @@ license=('unknown')
 groups=('vim-plugins')
 depends=('vim')
 conflicts=('vimoutliner' 'vim-vimoutliner')
+replaces=('vimoutliner')
 optdepends=('ruby: for otl2pod, opml2otl, doc2otl, otl2swiki')
 install=vimdoc.install
 source=(

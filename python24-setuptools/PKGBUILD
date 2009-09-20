@@ -6,13 +6,14 @@
 pkgname=python24-setuptools
 _pkgname=setuptools
 pkgver=0.6c9
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of enhancements to the Python distutils"
 arch=('i686' 'x86_64')
 url="http://peak.telecommunity.com/DevCenter/setuptools"
 license=('PSF')
 depends=('python24')
 conflicts=('setuptools-py24')
+replaces=('setuptools-py24')
 source=(http://cheeseshop.python.org/packages/source/s/${_pkgname}/${_pkgname}-${pkgver}.tar.gz)
 md5sums=('3864c01d9c719c8924c455714492295e')
 
