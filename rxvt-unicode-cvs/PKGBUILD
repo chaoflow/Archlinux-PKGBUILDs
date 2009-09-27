@@ -5,7 +5,7 @@
 
 pkgname=rxvt-unicode-cvs
 _pkgname=rxvt-unicode
-pkgver=20090915
+pkgver=20090927
 pkgrel=1
 pkgdesc="An unicode enabled rxvt-clone terminal emulator (urxvt) from cvs"
 arch=('i686' 'x86_64')
@@ -34,24 +34,27 @@ build() {
     cvs -z3 -d ${_cvsroot} co -D ${pkgver} -f ${_cvsmod}
     cd ${_cvsmod}
   fi
-  # necessary / harmful?
-  ./autogen.sh
 
   msg "CVS checkout done or server timeout"
   msg "Starting make..."
 
-  mkdir ${srcdir}/${_cvsmod}-build
+  mkdir -p ${srcdir}/${_cvsmod}-build
   cd ${srcdir}/${_cvsmod}-build
 
   ../${_srcdir}/${_cvsmod}/configure --prefix=/usr \
     --with-terminfo=/usr/share/terminfo \
+    --enable-xft \
     --enable-font-styles \
+    --enable-perl \
     --enable-xim \
     --enable-keepscrolling \
     --enable-selectionscrolling \
+    --enable-mousewheel \
+    --enable-slipwheeling \
     --enable-smart-resize \
     --enable-xpm-background \
     --enable-transparency \
+    --enable-pointer-blank \
     --enable-utmp \
     --enable-wtmp \
     --enable-lastlog
@@ -60,6 +63,7 @@ build() {
   export TERMINFO=${startdir}/pkg/usr/share/terminfo
   make DESTDIR=${startdir}/pkg install
  # install the tabbing wrapper ( requires gtk2-perl! )
+  cp $srcdir/$_cvsmod/doc/rxvt-tabbed $srcdir/${_cvsmod}-build/doc
   sed -i 's/\"rxvt\"/"urxvt"/' doc/rxvt-tabbed
   install -Dm 755 doc/rxvt-tabbed ${startdir}/pkg/usr/bin/urxvt-tabbed
  # install freedesktop menu and icon ( icon from cvs checkout )
