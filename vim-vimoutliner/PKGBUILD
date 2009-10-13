@@ -2,7 +2,7 @@
 
 pkgname=vim-vimoutliner
 pkgver=0.3.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Vim Outliner - one of many"
 arch=('any')
 url="http://www.vimoutliner.org/"
@@ -19,7 +19,7 @@ source=(
   vimoutlinerrc
   )
 md5sums=('66b69714be50a1f411830380a3e6bd5e'
-         '7524689f60251e05f6d9ff853493f3e0'
+         '40bf3647f9fc9d9c600f5a22cfe3d8ea'
          '9f59f4e104e5f5a79525565610a59b0f'
          '911183db87820b1a26b35b7ebab27e4b')
 

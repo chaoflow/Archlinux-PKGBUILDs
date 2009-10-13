@@ -22,5 +22,5 @@ for x in doc ftplugin syntax; do
     install -m644 $src/$x/* $pkgdir/usr/share/vim/vimfiles/$x/
 done
 
-install -d $pkgdir/usr/share/vim-vimoutliner/
-install -m644 $src/add-ons/plugins/* $pkgdir/usr/share/vim-vimoutliner/
+install -d $pkgdir/usr/share/vim/vimfiles/plugins/
+install -m644 $src/add-ons/plugins/* $pkgdir/usr/share/vim/vimfiles/plugins/
