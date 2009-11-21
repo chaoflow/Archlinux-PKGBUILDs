@@ -9,7 +9,7 @@
 pkgname=vim-tvo
 pkgver=122
 _srcid=5768
-pkgrel=4
+pkgrel=6
 pkgdesc="The Vim Outliner - one of many"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=517"
