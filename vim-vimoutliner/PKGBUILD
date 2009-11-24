@@ -2,7 +2,7 @@
 
 pkgname=vim-vimoutliner
 pkgver=0.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Vim Outliner - one of many"
 arch=('any')
 url="http://www.vimoutliner.org/"
