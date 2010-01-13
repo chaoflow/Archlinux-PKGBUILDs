@@ -4,7 +4,7 @@
 pkgname=vim-pydoc
 pkgver=1.1.1
 _srcid=3973
-pkgrel=1
+pkgrel=2
 pkgdesc="Search and view python documentation from within vim (uses pydoc)"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=910"
