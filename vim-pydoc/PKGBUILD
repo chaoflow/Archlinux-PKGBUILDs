@@ -4,7 +4,7 @@
 pkgname=vim-pydoc
 pkgver=1.1.1
 _srcid=3973
-pkgrel=2
+pkgrel=3
 pkgdesc="Search and view python documentation from within vim (uses pydoc)"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=910"
@@ -18,5 +18,5 @@ md5sums=('b02f44eb7724bb0374bcba9a5215be1f')
 
 build() {
     install -Dm644 ${srcdir}/${pkgname}.vim \
-        ${pkgdir}/usr/share/vim/vimfiles/ftplugin/python_pydoc.vim || return 1
+        ${pkgdir}/usr/share/vim/vimfiles/plugin/pydoc.vim || return 1
 }
