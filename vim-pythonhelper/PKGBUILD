@@ -2,9 +2,9 @@
 # Contributor: Laszlo Papp <djszapi @ gmail at com>
 
 pkgname=vim-pythonhelper
-pkgver=0.82
-_srcid=10987
-pkgrel=2
+pkgver=0.83
+_srcid=12010
+pkgrel=1
 pkgdesc="Displays Python class, method or function the cursor is in on the status line"
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=435"
@@ -14,7 +14,7 @@ depends=('vim' 'python')
 source=(
   ${pkgname}.vim::http://www.vim.org/scripts/download_script.php?src_id=$_srcid
   )
-md5sums=('c0e8ad68f86ad81355679540a970b179')
+md5sums=('84b9e7c94167eb859b6a729559294869')
 
 build() {
     install -Dm644 ${srcdir}/${pkgname}.vim \
